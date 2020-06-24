@@ -1,0 +1,11 @@
+{
+  "action": "GET",
+  "path": ["accountStates", "25"],
+  "subject": {
+    "brokerIds": ["broker23"]
+  },
+  "resource": {
+      "location": "Belgium",
+      "issue": 2015
+  }
+}
