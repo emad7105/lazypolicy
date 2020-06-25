@@ -1,57 +1,28 @@
-
 package be.heydari.ast;
 
-import java.util.HashMap;
-import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.JsonNode;
+import lombok.*;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "name",
-    "value"
-})
+/**
+ * @author Emad Heydari Beni
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Head {
 
-    @JsonProperty("name")
+    // example: allow_partial
     private String name;
-    @JsonProperty("value")
-    private Value value;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Boolean value;
 
-    @JsonProperty("name")
-    public String getName() {
-        return name;
+    public static Head fromData(JsonNode head){
+        String name = head.get("name").asText();
+        Boolean value = head.get("value").get("value").asBoolean();
+
+        return Head.builder()
+                .name(name)
+                .value(value)
+                .build();
     }
-
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @JsonProperty("value")
-    public Value getValue() {
-        return value;
-    }
-
-    @JsonProperty("value")
-    public void setValue(Value value) {
-        this.value = value;
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }

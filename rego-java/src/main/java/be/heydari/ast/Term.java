@@ -1,57 +1,72 @@
-
 package be.heydari.ast;
 
-import java.util.HashMap;
-import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "type",
-    "value"
-})
+import com.fasterxml.jackson.databind.JsonNode;
+import lombok.*;
+
+import java.util.logging.Logger;
+
+/**
+ * Expression: 'data.accountStates[34].location = Belgium' is composed of
+ * <p>
+ * - Ref term
+ * - Value term
+ * - Operator term
+ *
+ * @author Emad Heydari Beni
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Term {
+    private static Logger logger = Logger.getLogger(Term.class.getName());
 
-    @JsonProperty("type")
     private String type;
-    @JsonProperty("value")
-    private Object value;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private TermValue value;
 
-    @JsonProperty("type")
-    public String getType() {
-        return type;
+    public static Term fromData(JsonNode term) {
+        String type = term.get("type").asText();
+        JsonNode termValue = term.get("value");
+
+        TermValue theTermValue = null;
+        if (type.equals("ref")) {
+            log(term, type);
+            theTermValue = RefTermValue.fromData(termValue);
+        } else {
+            switch (type) {
+                case "string":
+                    log(term, type);
+                    theTermValue = StringTermValue.fromData(termValue);
+                    break;
+                case "number":
+                    log(term, type);
+                    theTermValue = NumberTermValue.fromData(termValue);
+                    break;
+                case "boolean":
+                    log(term, type);
+                    theTermValue = BooleanTermValue.fromData(termValue);
+                    break;
+                default:
+                    warnNotSupported(type, term);
+                    break;
+
+            }
+        }
+        return Term.builder()
+                .type(type)
+                .value(theTermValue)
+                .build();
     }
 
-    @JsonProperty("type")
-    public void setType(String type) {
-        this.type = type;
+    private static void log(JsonNode term, String type) {
+        logger.info(type + " => " + term.toPrettyString());
     }
 
-    @JsonProperty("value")
-    public Object getValue() {
-        return value;
-    }
 
-    @JsonProperty("value")
-    public void setValue(Object value) {
-        this.value = value;
+    private static void warnNotSupported(String type, JsonNode term) {
+        logger.warning("Term Value not support: " +
+                "'" + type + "' => " +
+                term.toPrettyString());
     }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }

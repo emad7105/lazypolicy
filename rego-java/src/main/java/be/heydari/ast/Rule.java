@@ -1,71 +1,38 @@
-
 package be.heydari.ast;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.JsonNode;
+import lombok.*;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "head",
-    "body",
-    "default"
-})
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author Emad Heydari Beni
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Rule {
 
-    @JsonProperty("head")
+    // Rule[Body]
     private Head head;
-    @JsonProperty("body")
-    private List<Body> body = null;
-    @JsonProperty("default")
-    private Boolean _default;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    // a rule is made of one or many expressions
+    // Rule[body]
+    private List<Expression> expressions;
 
-    @JsonProperty("head")
-    public Head getHead() {
-        return head;
+    public static Rule fromData(JsonNode rule) {
+        JsonNode head = rule.get("head");
+        JsonNode expressions = rule.get("body");
+
+        List<Expression> expressionList = new ArrayList<>();
+        for (JsonNode expression : expressions) {
+            expressionList.add(Expression.fromData(expression));
+        }
+
+        return Rule.builder()
+                .head(Head.fromData(head))
+                .expressions(expressionList)
+                .build();
     }
-
-    @JsonProperty("head")
-    public void setHead(Head head) {
-        this.head = head;
-    }
-
-    @JsonProperty("body")
-    public List<Body> getBody() {
-        return body;
-    }
-
-    @JsonProperty("body")
-    public void setBody(List<Body> body) {
-        this.body = body;
-    }
-
-    @JsonProperty("default")
-    public Boolean getDefault() {
-        return _default;
-    }
-
-    @JsonProperty("default")
-    public void setDefault(Boolean _default) {
-        this._default = _default;
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }

@@ -79,57 +79,7 @@
                     "value": [
                       {
                         "type": "var",
-                        "value": "eq"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "string",
-                    "value": "Belgium"
-                  },
-                  {
-                    "type": "ref",
-                    "value": [
-                      {
-                        "type": "var",
-                        "value": "data"
-                      },
-                      {
-                        "type": "string",
-                        "value": "accountStates"
-                      },
-                      {
-                        "type": "var",
-                        "value": "statementId1"
-                      },
-                      {
-                        "type": "string",
-                        "value": "location"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "head": {
-              "name": "allow_partial",
-              "value": {
-                "type": "boolean",
-                "value": true
-              }
-            },
-            "body": [
-              {
-                "index": 0,
-                "terms": [
-                  {
-                    "type": "ref",
-                    "value": [
-                      {
-                        "type": "var",
-                        "value": "eq"
+                        "value": "gte"
                       }
                     ]
                   },
@@ -150,13 +100,13 @@
                       },
                       {
                         "type": "string",
-                        "value": "brokerId"
+                        "value": "issue"
                       }
                     ]
                   },
                   {
-                    "type": "string",
-                    "value": "broker23"
+                    "type": "number",
+                    "value": 2015
                   }
                 ]
               }
@@ -186,4 +136,3 @@
     ]
   }
 }
-
