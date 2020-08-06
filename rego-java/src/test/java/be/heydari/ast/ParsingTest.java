@@ -46,7 +46,7 @@ public class ParsingTest {
     }
 
 
-    private InputStream stream(String file) {
+    public static InputStream stream(String file) {
         return Thread.currentThread().getContextClassLoader().getResourceAsStream(file);
     }
 

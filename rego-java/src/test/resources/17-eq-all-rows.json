@@ -96,10 +96,6 @@
                       },
                       {
                         "type": "string",
-                        "value": "25"
-                      },
-                      {
-                        "type": "string",
                         "value": "brokerId"
                       }
                     ]
@@ -107,56 +103,6 @@
                   {
                     "type": "string",
                     "value": "broker23"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "head": {
-              "name": "allow_partial",
-              "value": {
-                "type": "boolean",
-                "value": true
-              }
-            },
-            "body": [
-              {
-                "index": 0,
-                "terms": [
-                  {
-                    "type": "ref",
-                    "value": [
-                      {
-                        "type": "var",
-                        "value": "eq"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "string",
-                    "value": "Belgium"
-                  },
-                  {
-                    "type": "ref",
-                    "value": [
-                      {
-                        "type": "var",
-                        "value": "data"
-                      },
-                      {
-                        "type": "string",
-                        "value": "accountStates"
-                      },
-                      {
-                        "type": "string",
-                        "value": "25"
-                      },
-                      {
-                        "type": "string",
-                        "value": "location"
-                      }
-                    ]
                   }
                 ]
               }
