@@ -6,6 +6,8 @@ import lombok.*;
 
 import java.util.logging.Logger;
 
+import static be.heydari.ast.TermType.*;
+
 /**
  * Expression: 'data.accountStates[34].location = Belgium' is composed of
  * <p>
@@ -19,7 +21,7 @@ import java.util.logging.Logger;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Term {
+public class Term implements ASTNode {
     private static Logger logger = Logger.getLogger(Term.class.getName());
 
     private String type;
@@ -30,20 +32,20 @@ public class Term {
         JsonNode termValue = term.get("value");
 
         TermValue theTermValue = null;
-        if (type.equals("ref")) {
+        if (REF.equals(type)) {
             log(term, type);
             theTermValue = RefTermValue.fromData(termValue);
         } else {
             switch (type) {
-                case "string":
+                case STRING:
                     log(term, type);
                     theTermValue = StringTermValue.fromData(termValue);
                     break;
-                case "number":
+                case NUMBER:
                     log(term, type);
                     theTermValue = NumberTermValue.fromData(termValue);
                     break;
-                case "boolean":
+                case BOOLEAN:
                     log(term, type);
                     theTermValue = BooleanTermValue.fromData(termValue);
                     break;

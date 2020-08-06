@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RefTermValue implements TermValue {
+public class RefTermValue implements TermValue<List<RefTermValuePart>> {
 
     private List<RefTermValuePart> refTermValueParts;
 
@@ -26,5 +26,10 @@ public class RefTermValue implements TermValue {
         return RefTermValue.builder()
                 .refTermValueParts(refTermValuePartList)
                 .build();
+    }
+
+    @Override
+    public List<RefTermValuePart> getValue() {
+        return refTermValueParts;
     }
 }

@@ -13,10 +13,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Rule {
+public class Rule implements ASTNode {
 
     // Rule[Body]
-    private Head head;
+    private Head head = new Head();
     // a rule is made of one or many expressions
     // Rule[body]
     private List<Expression> expressions;

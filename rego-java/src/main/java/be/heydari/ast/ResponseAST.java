@@ -14,10 +14,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ResponseAST {
+public class ResponseAST implements ASTNode {
 
 
-    private List<Support> support;
+    private List<Support> supports;
 
     public static ResponseAST fromData(JsonNode response) {
         // TODO null checks
@@ -30,7 +30,7 @@ public class ResponseAST {
         }
 
         return ResponseAST.builder()
-                .support(supportList)
+                .supports(supportList)
                 .build();
     }
 }

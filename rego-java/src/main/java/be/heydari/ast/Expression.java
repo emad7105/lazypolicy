@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Expression {
+public class Expression implements ASTNode {
     private static Logger logger = Logger.getLogger(Expression.class.getName());
 
 

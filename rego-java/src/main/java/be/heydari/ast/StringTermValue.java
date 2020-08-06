@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StringTermValue implements TermValue {
+public class StringTermValue implements TermValue<String> {
 
     private String value;
 
@@ -19,6 +19,12 @@ public class StringTermValue implements TermValue {
 
         return StringTermValue.builder()
                 .value(value)
+                .build();
+    }
+
+    public static StringTermValue newStringTermValue(TermValue value) {
+        return StringTermValue.builder()
+                .value((String) value.getValue())
                 .build();
     }
 }

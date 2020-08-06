@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Support {
+public class Support implements ASTNode {
 
     private List<Rule> rules;
 

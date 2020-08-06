@@ -8,5 +8,7 @@ import lombok.Setter;
 /**
  * @author Emad Heydari Beni
  */
-public interface TermValue {
+public interface TermValue<T> extends ASTNode {
+
+    T getValue();
 }

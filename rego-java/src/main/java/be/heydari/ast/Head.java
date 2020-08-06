@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Head {
+public class Head implements ASTNode {
 
     // example: allow_partial
     private String name;
