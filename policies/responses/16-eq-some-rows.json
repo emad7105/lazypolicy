@@ -79,7 +79,7 @@
                     "value": [
                       {
                         "type": "var",
-                        "value": "lt"
+                        "value": "eq"
                       }
                     ]
                   },
@@ -100,13 +100,113 @@
                       },
                       {
                         "type": "string",
-                        "value": "issue"
+                        "value": "brokerId"
                       }
                     ]
                   },
                   {
-                    "type": "number",
-                    "value": 2015
+                    "type": "string",
+                    "value": "broker23"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "head": {
+              "name": "allow_partial",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            "body": [
+              {
+                "index": 0,
+                "terms": [
+                  {
+                    "type": "ref",
+                    "value": [
+                      {
+                        "type": "var",
+                        "value": "eq"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ref",
+                    "value": [
+                      {
+                        "type": "var",
+                        "value": "data"
+                      },
+                      {
+                        "type": "string",
+                        "value": "accountStates"
+                      },
+                      {
+                        "type": "string",
+                        "value": "2"
+                      },
+                      {
+                        "type": "string",
+                        "value": "brokerId"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "string",
+                    "value": "broker23"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "head": {
+              "name": "allow_partial",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            "body": [
+              {
+                "index": 0,
+                "terms": [
+                  {
+                    "type": "ref",
+                    "value": [
+                      {
+                        "type": "var",
+                        "value": "eq"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ref",
+                    "value": [
+                      {
+                        "type": "var",
+                        "value": "data"
+                      },
+                      {
+                        "type": "string",
+                        "value": "accountStates"
+                      },
+                      {
+                        "type": "string",
+                        "value": "3"
+                      },
+                      {
+                        "type": "string",
+                        "value": "brokerId"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "string",
+                    "value": "broker23"
                   }
                 ]
               }

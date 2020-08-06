@@ -12,5 +12,6 @@ allow_partial {
 
 allow_partial {
   input.action == "GET"
+  input.path == ["accountStates", statementId]
   data.accountStates[statementId].location == input.resource.location
 }

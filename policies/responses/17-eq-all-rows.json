@@ -79,7 +79,7 @@
                     "value": [
                       {
                         "type": "var",
-                        "value": "lt"
+                        "value": "eq"
                       }
                     ]
                   },
@@ -96,17 +96,13 @@
                       },
                       {
                         "type": "string",
-                        "value": "1"
-                      },
-                      {
-                        "type": "string",
-                        "value": "issue"
+                        "value": "brokerId"
                       }
                     ]
                   },
                   {
-                    "type": "number",
-                    "value": 2015
+                    "type": "string",
+                    "value": "broker23"
                   }
                 ]
               }

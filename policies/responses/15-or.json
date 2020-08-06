@@ -84,10 +84,6 @@
                     ]
                   },
                   {
-                    "type": "string",
-                    "value": "Belgium"
-                  },
-                  {
                     "type": "ref",
                     "value": [
                       {
@@ -99,14 +95,18 @@
                         "value": "accountStates"
                       },
                       {
-                        "type": "var",
-                        "value": "statementId1"
+                        "type": "string",
+                        "value": "1"
                       },
                       {
                         "type": "string",
-                        "value": "location"
+                        "value": "brokerId"
                       }
                     ]
+                  },
+                  {
+                    "type": "string",
+                    "value": "broker23"
                   }
                 ]
               }
@@ -134,6 +134,10 @@
                     ]
                   },
                   {
+                    "type": "string",
+                    "value": "Belgium"
+                  },
+                  {
                     "type": "ref",
                     "value": [
                       {
@@ -146,17 +150,13 @@
                       },
                       {
                         "type": "string",
-                        "value": "25"
+                        "value": "1"
                       },
                       {
                         "type": "string",
-                        "value": "brokerId"
+                        "value": "location"
                       }
                     ]
-                  },
-                  {
-                    "type": "string",
-                    "value": "broker23"
                   }
                 ]
               }

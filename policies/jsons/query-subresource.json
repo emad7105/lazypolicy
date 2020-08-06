@@ -14,10 +14,11 @@
         "resource": {
             "location": "Belgium",
             "issue": 2015,
-            "statementIds": ["1", "2", "3"]
+            "statementIds": ["35"]
         }
     },
     "unknowns": [
-        "data.accountStates"
+        "data.broker",
+        "data.account_state"
     ]
 }
