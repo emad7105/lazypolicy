@@ -2,7 +2,10 @@ package be.heydari.ast;
 
 
 import com.fasterxml.jackson.databind.JsonNode;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.logging.Logger;
 
@@ -32,34 +35,33 @@ public class Term implements ASTNode {
         JsonNode termValue = term.get("value");
 
         TermValue theTermValue = null;
-        if (REF.equals(type)) {
-            log(term, type);
-            theTermValue = RefTermValue.fromData(termValue);
-        } else {
-            switch (type) {
-                case STRING:
-                    log(term, type);
-                    theTermValue = StringTermValue.fromData(termValue);
-                    break;
-                case NUMBER:
-                    log(term, type);
-                    theTermValue = NumberTermValue.fromData(termValue);
-                    break;
-                case BOOLEAN:
-                    log(term, type);
-                    theTermValue = BooleanTermValue.fromData(termValue);
-                    break;
-                default:
-                    warnNotSupported(type, term);
-                    break;
-
-            }
+        switch (type) {
+            case REF:
+                log(term, type);
+                theTermValue = RefTermValue.fromData(termValue);
+                break;
+            case STRING:
+                log(term, type);
+                theTermValue = StringTermValue.fromData(termValue);
+                break;
+            case NUMBER:
+                log(term, type);
+                theTermValue = NumberTermValue.fromData(termValue);
+                break;
+            case BOOLEAN:
+                log(term, type);
+                theTermValue = BooleanTermValue.fromData(termValue);
+                break;
+            default:
+                warnNotSupported(type, term);
+                break;
         }
         return Term.builder()
                 .type(type)
                 .value(theTermValue)
                 .build();
     }
+
 
     private static void log(JsonNode term, String type) {
         logger.info(type + " => " + term.toPrettyString());

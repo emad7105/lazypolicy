@@ -1,7 +1,10 @@
 package be.heydari.ast;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Emad Heydari Beni
@@ -10,12 +13,12 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class NumberTermValue implements TermValue<Double> {
+public class NumberTermValue implements TermValue<Long> {
 
-    private Double value;
+    private Long value;
 
     public static NumberTermValue fromData(JsonNode numberValueTerm) {
-        Double value = Double.valueOf(numberValueTerm.asDouble());
+        Long value = Long.valueOf(numberValueTerm.asLong());
 
         return NumberTermValue.builder()
                 .value(value)
@@ -24,7 +27,7 @@ public class NumberTermValue implements TermValue<Double> {
 
     public static NumberTermValue newNumberTermValue(TermValue value) {
         return NumberTermValue.builder()
-                .value((Double) value.getValue())
+                .value((Long) value.getValue())
                 .build();
     }
 }

@@ -96,10 +96,6 @@
                       },
                       {
                         "type": "string",
-                        "value": "1"
-                      },
-                      {
-                        "type": "string",
                         "value": "issue"
                       }
                     ]

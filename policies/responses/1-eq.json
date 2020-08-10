@@ -96,11 +96,11 @@
                       },
                       {
                         "type": "string",
-                        "value": "25"
+                        "value": "broker"
                       },
                       {
                         "type": "string",
-                        "value": "brokerId"
+                        "value": "id"
                       }
                     ]
                   },

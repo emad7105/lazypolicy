@@ -5,7 +5,6 @@ default allow_partial = false
 
 allow_partial {
   input.action == "GET"
-  input.path == ["accountStates", statementId]
   brokerId := input.subject.brokerIds[_]
-  data.accountStates[statementId].brokerId == brokerId
+  data.accountStates.broker.id == brokerId
 }

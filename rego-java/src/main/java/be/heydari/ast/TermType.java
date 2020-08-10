@@ -6,4 +6,5 @@ public interface TermType {
     String STRING = "string";
     String BOOLEAN = "boolean";
     String NUMBER = "number";
+    String VAR = "var";
 }

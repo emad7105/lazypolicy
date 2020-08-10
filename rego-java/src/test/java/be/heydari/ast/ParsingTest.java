@@ -1,11 +1,9 @@
 package be.heydari.ast;
 
-import be.heydari.parser.ResponseParser;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import be.heydari.parsers.ResponseParser;
 import com.google.common.base.Charsets;
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
