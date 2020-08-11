@@ -36,9 +36,9 @@ policies=(
 "4-lt-specific-row"
 "5-lte"
 "5-lte-specific-row"
-#"6-neq"
+"6-neq"
 #"7-all"
-#"8-and"
+"8-and"
 
 #"9-any"
 #"10-between"

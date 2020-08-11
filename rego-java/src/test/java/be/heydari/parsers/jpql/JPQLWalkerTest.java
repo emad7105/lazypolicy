@@ -1,6 +1,5 @@
 package be.heydari.parsers.jpql;
 
-import be.heydari.ast.ParsingTest;
 import be.heydari.ast.ResponseAST;
 import be.heydari.parsers.ResponseParser;
 import org.junit.Before;
@@ -119,6 +118,26 @@ public class JPQLWalkerTest {
         String jpqlWhereClauses = parseAst("5-lte-specific-row.json");
 
         assertEquals(rmSpace("( ( accountStates.id = 1   AND  accountStates.issue <= 2015  ) )"),
+                rmSpace(jpqlWhereClauses));
+
+        logger.info(jpqlWhereClauses);
+    }
+
+    @Test
+    public void processAstNeq() throws IOException {
+        String jpqlWhereClauses = parseAst("6-neq.json");
+
+        assertEquals(rmSpace("( ( accountStates.broker.id <> broker23  ) )"),
+                rmSpace(jpqlWhereClauses));
+
+        logger.info(jpqlWhereClauses);
+    }
+
+    @Test
+    public void processAstAnd() throws IOException {
+        String jpqlWhereClauses = parseAst("8-and.json");
+
+        assertEquals(rmSpace("( ( accountStates.id = 1   AND  accountStates.broker.Id = broker23   AND  accountStates.location = Belgium  ) )"),
                 rmSpace(jpqlWhereClauses));
 
         logger.info(jpqlWhereClauses);

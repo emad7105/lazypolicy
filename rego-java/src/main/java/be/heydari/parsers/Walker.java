@@ -72,6 +72,7 @@ public abstract class Walker<TBoolExpression, TEntity> {
                     case REF:
                         // setLeft(left) & setOperator(op)
                         processRef(boolPredicate, left, term);
+                        break;
                     case STRING:
                         right.setType(ExpressionType.STRING);
                         right.setValue(term.getValue().getValue());

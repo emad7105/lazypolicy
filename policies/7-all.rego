@@ -21,7 +21,7 @@ any_located_in_this_location {
 }
 
 # TODO: the above rules do not really represent Universal quantification. This rule says
-# the statement ID, e.g. 25, is not from a prticular location, e.g., Belgium. However, 
+# the statement ID, e.g. 25, is not from a particular location, e.g., Belgium. However,
 # what we actually want is: There must be be no account statement from this location (e.g., Belgium)
 # Note: not really sure what it means in SQL though.
 
