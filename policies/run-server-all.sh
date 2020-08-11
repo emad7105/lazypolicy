@@ -35,7 +35,7 @@ policies=(
 #"13-like"
 #"14-not"
 
-#"15-or"
+"15-or"
 #"16-eq-some-rows"
 #"17-eq-all-rows"
 #"18-eq-relations"

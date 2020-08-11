@@ -143,6 +143,16 @@ public class JPQLWalkerTest {
         logger.info(jpqlWhereClauses);
     }
 
+    @Test
+    public void processAstOr() throws IOException {
+        String jpqlWhereClauses = parseAst("15-or.json");
+
+        assertEquals(rmSpace("( ( accountStates.broker.id <> broker23   AND  accountStates.issue >= 2019  )  OR  ( accountStates.broker.id = broker23   AND  accountStates.issue > 2015   AND  accountStates.location = Belgium  )  OR  ( accountStates.broker.id = broker23   AND  accountStates.issue <= 2015   AND  accountStates.location <> Belgium  ) )"),
+                rmSpace(jpqlWhereClauses));
+
+        logger.info(jpqlWhereClauses);
+    }
+
     private String parseAst(String file) throws IOException {
         ResponseAST responseAST = responseParser.parse(stream(file));
 
