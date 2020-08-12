@@ -2,6 +2,7 @@ package be.heydari.parsers.jpql;
 
 import be.heydari.ast.ResponseAST;
 import be.heydari.parsers.ResponseParser;
+import be.heydari.parsers.querydsl.QueryDslWalker;
 import org.junit.Before;
 import org.junit.Test;
 

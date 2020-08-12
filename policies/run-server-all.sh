@@ -37,8 +37,6 @@ policies=(
 
 "15-or"
 #"16-eq-some-rows"
-#"17-eq-all-rows"
-#"18-eq-relations"
 #"paul-eq"
 )
 
