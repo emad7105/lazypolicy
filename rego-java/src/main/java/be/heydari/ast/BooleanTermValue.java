@@ -17,6 +17,7 @@ public class BooleanTermValue implements TermValue<Boolean> {
 
     private Boolean value;
 
+
     public static BooleanTermValue fromData(JsonNode booleanTermValue) {
         Boolean value = Boolean.valueOf(booleanTermValue.asBoolean());
 

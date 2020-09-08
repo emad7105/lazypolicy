@@ -79,7 +79,7 @@ public abstract class Walker<TBoolExpression, TEntity> {
                         break;
                     case NUMBER:
                         right.setType(ExpressionType.NUMERIC);
-                        right.setValue(term.getValue().getValue());
+                        right.setValue(((NumberValue)term.getValue().getValue()).getValue());
                         break;
                     case BOOLEAN:
                         right.setType(ExpressionType.BOOLEAN);
