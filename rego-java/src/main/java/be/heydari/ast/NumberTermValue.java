@@ -30,23 +30,28 @@ public class NumberTermValue implements TermValue<NumberValue> {
         switch (type) {
             case INT:
                 numberTermValue = NumberTermValue.builder()
-                        .value(new NumberValue<Integer>(numberValueTerm.asInt()))
+                        .value(new NumberValue<Integer>(numberValueTerm.asInt(), NumberType.INT))
                         .build();
                 break;
             case LONG:
                 numberTermValue = NumberTermValue.builder()
-                        .value(new NumberValue<Long>(numberValueTerm.asLong()))
+                        .value(new NumberValue<Long>(numberValueTerm.asLong(), NumberType.LONG))
+                        .build();
+                break;
+            case FLOAT:
+                numberTermValue = NumberTermValue.builder()
+                        .value(new NumberValue<Float>(((Double)numberValueTerm.asDouble()).floatValue(), NumberType.FLOAT))
                         .build();
                 break;
             case DOUBLE:
                 numberTermValue = NumberTermValue.builder()
-                        .value(new NumberValue<Double>(numberValueTerm.asDouble()))
+                        .value(new NumberValue<Double>(numberValueTerm.asDouble(), NumberType.DOUBLE))
                         .build();
                 break;
             default:
                 logger.warning(format("Type(%s) is not supported in the conversion of JSON number to Java: NumberTermValue", type.toString()));
                 numberTermValue = NumberTermValue.builder()
-                        .value(new NumberValue<String>(numberValueTerm.asText()))
+                        .value(new NumberValue<String>(numberValueTerm.asText(), null))
                         .build();
                 break;
         }

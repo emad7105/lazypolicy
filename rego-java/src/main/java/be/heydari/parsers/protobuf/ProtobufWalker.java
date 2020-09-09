@@ -1,8 +1,11 @@
-package be.heydari.parsers;
+package be.heydari.parsers.protobuf;
 
 import be.heydari.ast.*;
 import be.heydari.ast.Expression;
 import be.heydari.expressions.*;
+import be.heydari.parsers.Walker;
+import be.heydari.parsers.protobuf.generated.PBooleanExpression;
+import be.heydari.parsers.protobuf.generated.PDisjunction;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,13 +14,20 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import static be.heydari.ast.TermType.*;
-import static be.heydari.ast.TermType.VAR;
 import static be.heydari.expressions.ComparisonOperator.from;
 import static java.lang.String.format;
 
-public abstract class Walker<TBoolExpression, TEntity> {
-    public abstract TBoolExpression processAst(ResponseAST ast, TEntity entity);
-    public abstract Logger getLogger();
+public class ProtobufWalker extends Walker<PDisjunction, String> {
+    private static Logger logger = Logger.getLogger(ProtobufWalker.class.getName());
+
+
+    @Override
+    public PDisjunction processAst(ResponseAST ast, String entity) {
+        Disjunction disjunctiveQuery = walk(ast);
+
+        ProtobufVisitor visitor = new ProtobufVisitor();
+        return visitor.visit(disjunctiveQuery, entity);
+    }
 
 
     protected Disjunction walk(ResponseAST ast) {
@@ -78,8 +88,9 @@ public abstract class Walker<TBoolExpression, TEntity> {
                         right.setValue(term.getValue().getValue());
                         break;
                     case NUMBER:
-                        NumberTermValue numberValue = (NumberTermValue)term.getValue();
-                        right.setType(ExpressionType.fromNumerType(numberValue.getValue().getType()));
+                        NumberTermValue numberValue = (NumberTermValue) term.getValue();
+                        ExpressionType expressionType = ExpressionType.fromNumerType(numberValue.getValue().getType());
+                        right.setType(expressionType);
                         right.setValue(numberValue.getValue().getValue());
                         break;
                     case BOOLEAN:
@@ -106,7 +117,7 @@ public abstract class Walker<TBoolExpression, TEntity> {
                 String refTermType = refTermValuePart.getType();
                 if (VAR.equals(refTermType)) {
                     ComparisonOperator op = from(refTermValuePart.getValue());
-                    if (op == null){
+                    if (op == null) {
                         getLogger().severe("operator is null");
                     }
                     boolPredicate.setOperator(op);
@@ -131,8 +142,8 @@ public abstract class Walker<TBoolExpression, TEntity> {
         boolPredicate.setLeft(left);
     }
 
-    /*public static String fetchEntityId() {
-
-    }*/
-
+    @Override
+    public Logger getLogger() {
+        return logger;
+    }
 }

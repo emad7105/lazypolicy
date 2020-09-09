@@ -12,5 +12,5 @@ public interface Visitor {
     <E> BooleanExpression visit(Conjunction conjunction, Class<E> entityType);
     <E> BooleanExpression visit(Disjunction disjunction, Class<E> entityType);
     <T,E> BooleanExpression visit(BoolPredicate<T> predicate, Class<E> entityType);
-    <E> PathBuilder visit(RefExpression<Long> refExpression, Class<E> entityType);
+    <E> PathBuilder visit(RefExpression refExpression, Class<E> entityType);
 }

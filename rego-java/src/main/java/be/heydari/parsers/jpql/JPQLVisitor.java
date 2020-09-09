@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 import static java.lang.String.format;
 
-public class JPQLVisitor implements Visitor<String, StringBuilder, StringBuilder> {
+public class JPQLVisitor implements Visitor<String, StringBuilder, StringBuilder, StringBuilder, StringBuilder> {
     private static Logger logger = Logger.getLogger(JPQLVisitor.class.getName());
 
     @Override
@@ -98,7 +98,7 @@ public class JPQLVisitor implements Visitor<String, StringBuilder, StringBuilder
     }
 
     @Override
-    public StringBuilder visit(RefExpression<Long> refExpression, String entity) {
+    public StringBuilder visit(RefExpression refExpression, String entity) {
         return new StringBuilder(format("%s.%s",refExpression.getTable(),refExpression.getColumn()));
     }
 }

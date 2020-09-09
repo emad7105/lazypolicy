@@ -8,10 +8,13 @@ import be.heydari.expressions.RefExpression;
 /**
  * @author Emad Heydari Beni
  */
-public interface Visitor<TEntity, TBoolExpression, TReference> {
+public interface Visitor<TEntity, TDisjunction, TConjunction, TPredicate, TReference> {
 
-    TBoolExpression visit(Conjunction conjunction, TEntity entity);
-    TBoolExpression visit(Disjunction disjunction, TEntity entity);
-    <TValueType> TBoolExpression visit(BoolPredicate<TValueType> predicate, TEntity entity);
-    TReference visit(RefExpression<Long> refExpression, TEntity entity);
+    TDisjunction visit(Disjunction disjunction, TEntity entity);
+
+    TConjunction visit(Conjunction conjunction, TEntity entity);
+
+    <TValueType> TPredicate visit(BoolPredicate<TValueType> predicate, TEntity entity);
+
+    TReference visit(RefExpression refExpression, TEntity entity);
 }

@@ -69,7 +69,7 @@ public class QueryDslVisitor implements Visitor {
     }
 
     @Override
-    public <E> PathBuilder visit(RefExpression<Long> refExpression, Class<E> entityType) {
+    public <E> PathBuilder visit(RefExpression refExpression, Class<E> entityType) {
         // TODO: only Long
         PathBuilder entityPath = new PathBuilder(entityType, "entity");
         return entityPath.get(refExpression.getColumn(), Long.class);

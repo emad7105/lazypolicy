@@ -4,7 +4,7 @@ package lazyeval;
 
 option java_package = "be.heydari.parsers.protobuf.generated";
 option java_outer_classname = "PBooleanExpression";
-option java_multiple_files = false;
+option java_multiple_files = true;
 
 message PDisjunction {
   repeated PConjunction conjunctions = 1;
@@ -23,31 +23,37 @@ message PConjunction {
 message PBooleanPredicate {
   PRefExpression left = 1;
   bool right = 2;
+  string operator = 3;
 }
 
 message PStringPredicate {
   PRefExpression left = 1;
   string right = 2;
+  string operator = 3;
 }
 
 message PIntPredicate {
   PRefExpression left = 1;
   int32 right = 2;
+  string operator = 3;
 }
 
 message PLongPredicate {
   PRefExpression left = 1;
   int64 right = 2;
+  string operator = 3;
 }
 
 message PFloatPredicate {
   PRefExpression left = 1;
   float right = 2;
+  string operator = 3;
 }
 
 message PDoublePredicate {
   PRefExpression left = 1;
   double right = 2;
+  string operator = 3;
 }
 
 message PRefExpression {

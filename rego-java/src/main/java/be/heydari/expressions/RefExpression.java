@@ -21,9 +21,9 @@ import lombok.Data;
  * @author Emad Heydari Beni
  */
 @Data
-public class RefExpression<T> {
+public class RefExpression{//<T> {
     private String table;
     private String column;
-    private T entityId; // TODO: in the visitor it's only Double atm.
+    //private T entityId; // TODO: in the visitor it's only Double atm.
 
 }

@@ -27,6 +27,7 @@ import static be.heydari.ast.TermType.*;
 public class Term implements ASTNode {
     private static Logger logger = Logger.getLogger(Term.class.getName());
 
+    // ref,string,number or boolean
     private String type;
     private TermValue value;
 
