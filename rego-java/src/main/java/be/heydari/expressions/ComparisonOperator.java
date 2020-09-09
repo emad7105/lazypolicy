@@ -15,37 +15,37 @@ public enum ComparisonOperator {
     EQ {
         @Override
         public String asLowerCase() {
-            return EQ.toString().toLowerCase();
+            return "eq";
         }
     },
     NEQ {
         @Override
         public String asLowerCase() {
-            return NEQ.toString().toLowerCase();
+            return "neq";
         }
     },
     GTE {
         @Override
         public String asLowerCase() {
-            return GTE.toString().toLowerCase();
+            return "gte";
         }
     },
     GT {
         @Override
         public String asLowerCase() {
-            return GT.toString().toLowerCase();
+            return "gt";
         }
     },
     LTE {
         @Override
         public String asLowerCase() {
-            return LTE.toString().toLowerCase();
+            return "lte";
         }
     },
     LT {
         @Override
         public String asLowerCase() {
-            return LT.toString().toLowerCase();
+            return "lt";
         }
     };
 
