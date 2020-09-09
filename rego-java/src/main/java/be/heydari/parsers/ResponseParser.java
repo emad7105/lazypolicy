@@ -2,6 +2,7 @@ package be.heydari.parsers;
 
 
 import be.heydari.ast.ResponseAST;
+import be.heydari.parsers.protobuf.generated.PBooleanExpression;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Preconditions;

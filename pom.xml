@@ -10,7 +10,6 @@
     <packaging>pom</packaging>
 
     <modules>
-  		<module>./query-translator</module>
   		<module>./rego-java</module>
   	</modules>
 
