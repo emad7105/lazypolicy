@@ -1,4 +1,4 @@
-package be.heydari.parsers.querydsl;
+package be.heydari.converters.querydsl;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
 
