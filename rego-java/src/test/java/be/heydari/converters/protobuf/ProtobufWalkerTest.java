@@ -1,18 +1,16 @@
-package be.heydari.parsers.protobuf;
+package be.heydari.converters.protobuf;
 
 import be.heydari.ast.ResponseAST;
-import be.heydari.parsers.ResponseParser;
-import be.heydari.parsers.protobuf.generated.PDisjunction;
+import be.heydari.converters.ResponseParser;
+import be.heydari.converters.protobuf.generated.PDisjunction;
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.logging.Logger;
 
@@ -46,6 +44,8 @@ public class ProtobufWalkerTest {
         logger.info(pDisjunction.toString());
         logger.info(pDisjunction.toByteString().toStringUtf8());
         writeToFile(file, pDisjunction);
+
+
 
         /*String expected = "\n" +
                 "(\u0012&\n" +

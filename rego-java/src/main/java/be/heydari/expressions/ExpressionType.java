@@ -9,11 +9,21 @@ public enum ExpressionType {
         public String asLowerCase() {
             return "boolean";
         }
+
+        @Override
+        public Class getJavaClass() {
+            return Boolean.class;
+        }
     },
     STRING {
         @Override
         public String asLowerCase() {
             return "string";
+        }
+
+        @Override
+        public Class getJavaClass() {
+            return String.class;
         }
     },
 
@@ -23,11 +33,21 @@ public enum ExpressionType {
         public String asLowerCase() {
             return "i";
         }
+
+        @Override
+        public Class getJavaClass() {
+            return Integer.class;
+        }
     },
     LONG {
         @Override
         public String asLowerCase() {
             return "l";
+        }
+
+        @Override
+        public Class getJavaClass() {
+            return Long.class;
         }
     },
     FLOAT {
@@ -35,15 +55,26 @@ public enum ExpressionType {
         public String asLowerCase() {
             return "f";
         }
+
+        @Override
+        public Class getJavaClass() {
+            return Float.class;
+        }
     },
     DOUBLE {
         @Override
         public String asLowerCase() {
             return "d";
         }
+
+        @Override
+        public Class getJavaClass() {
+            return Float.class;
+        }
     };
 
     public abstract String asLowerCase();
+    public abstract Class getJavaClass();
 
     public static ExpressionType fromNumerType(NumberType numberType) {
         switch (numberType) {

@@ -1,6 +1,6 @@
 package be.heydari.ast;
 
-import be.heydari.parsers.jpql.JPQLVisitor;
+import be.heydari.converters.jpql.JPQLVisitor;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.AllArgsConstructor;

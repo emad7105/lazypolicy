@@ -40,6 +40,8 @@ policies=(
 #"paul-eq"
 )
 
+sleep 5
+
 #for policy in `ls *.rego`
 for policy in "${policies[@]}"
 do

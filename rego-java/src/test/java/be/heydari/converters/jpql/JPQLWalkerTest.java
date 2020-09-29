@@ -1,13 +1,11 @@
-package be.heydari.parsers.jpql;
+package be.heydari.converters.jpql;
 
 import be.heydari.ast.ResponseAST;
-import be.heydari.parsers.ResponseParser;
-import be.heydari.parsers.querydsl.QueryDslWalker;
+import be.heydari.converters.ResponseParser;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.logging.Logger;
 
 import static be.heydari.ast.ParsingTest.stream;
@@ -28,7 +26,7 @@ public class JPQLWalkerTest {
     public void processAstEq() throws IOException {
         String jpqlWhereClauses = parseAst("1-eq.json");
 
-        assertEquals(rmSpace("( ( accountStates.broker.id = broker23  ) )"),
+        assertEquals(rmSpace("( ( accountStates.broker.id = 1  ) )"),
                 rmSpace(jpqlWhereClauses));
 
         logger.info(jpqlWhereClauses);

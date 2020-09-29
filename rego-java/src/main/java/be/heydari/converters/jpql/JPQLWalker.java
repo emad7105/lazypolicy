@@ -1,9 +1,9 @@
-package be.heydari.parsers.jpql;
+package be.heydari.converters.jpql;
 
 
 import be.heydari.ast.*;
 import be.heydari.expressions.*;
-import be.heydari.parsers.Walker;
+import be.heydari.converters.Walker;
 
 import java.util.logging.Logger;
 

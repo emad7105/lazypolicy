@@ -105,8 +105,8 @@
                     ]
                   },
                   {
-                    "type": "string",
-                    "value": "broker23"
+                    "type": "number",
+                    "value": 1
                   }
                 ]
               },
@@ -190,8 +190,8 @@
                     ]
                   },
                   {
-                    "type": "string",
-                    "value": "broker23"
+                    "type": "number",
+                    "value": 1
                   }
                 ]
               },
@@ -310,8 +310,8 @@
                     ]
                   },
                   {
-                    "type": "string",
-                    "value": "broker23"
+                    "type": "number",
+                    "value": 1
                   }
                 ]
               },

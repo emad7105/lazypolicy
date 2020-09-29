@@ -1,6 +1,6 @@
 package be.heydari.ast;
 
-import be.heydari.parsers.ResponseParser;
+import be.heydari.converters.ResponseParser;
 import org.junit.Before;
 import org.junit.Test;
 

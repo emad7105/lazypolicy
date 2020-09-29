@@ -2,7 +2,7 @@ syntax = "proto3";
 package lazyeval;
 
 
-option java_package = "be.heydari.parsers.protobuf.generated";
+option java_package = "be.heydari.converters.protobuf.generated";
 option java_outer_classname = "PBooleanExpression";
 option java_multiple_files = true;
 

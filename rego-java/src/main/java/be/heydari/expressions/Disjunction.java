@@ -1,8 +1,5 @@
 package be.heydari.expressions;
 
-import be.heydari.parsers.querydsl.Visitable;
-import be.heydari.parsers.querydsl.Visitor;
-import com.querydsl.core.types.dsl.BooleanExpression;
 import lombok.Builder;
 import lombok.Data;
 

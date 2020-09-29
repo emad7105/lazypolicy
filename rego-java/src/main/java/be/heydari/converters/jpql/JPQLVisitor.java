@@ -1,9 +1,7 @@
-package be.heydari.parsers.jpql;
+package be.heydari.converters.jpql;
 
 import be.heydari.expressions.*;
-import be.heydari.parsers.Visitor;
-import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.core.types.dsl.Expressions;
+import be.heydari.converters.Visitor;
 
 import java.util.Iterator;
 import java.util.List;
