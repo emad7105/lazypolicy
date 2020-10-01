@@ -1,5 +1,7 @@
 package be.heydari.ast;
 
+import be.heydari.lib.expressions.ExpressionType;
+
 /**
  * @author Emad Heydari Beni
  */
@@ -41,6 +43,21 @@ public enum NumberType {
                 return NumberType.FLOAT;
             case "d":
                 return NumberType.DOUBLE;
+            default:
+                return null;
+        }
+    }
+
+    public static ExpressionType toExpressionType(NumberType numberType) {
+        switch (numberType) {
+            case INT:
+                return ExpressionType.INT;
+            case LONG:
+                return ExpressionType.LONG;
+            case FLOAT:
+                return ExpressionType.FLOAT;
+            case DOUBLE:
+                return ExpressionType.DOUBLE;
             default:
                 return null;
         }

@@ -1,6 +1,6 @@
 package be.heydari.ast;
 
-import be.heydari.converters.jpql.JPQLVisitor;
+import be.heydari.lib.converters.jpql.JPQLConverter;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ import static java.lang.String.format;
 @AllArgsConstructor
 @Builder
 public class NumberTermValue implements TermValue<NumberValue> {
-    private static Logger logger = Logger.getLogger(JPQLVisitor.class.getName());
+    private static Logger logger = Logger.getLogger(JPQLConverter.class.getName());
 
     private NumberValue value;
 

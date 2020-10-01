@@ -1,6 +1,6 @@
 package be.heydari.ast;
 
-import be.heydari.converters.ResponseParser;
+import be.heydari.ResponseParser;
 import com.google.common.base.Charsets;
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
