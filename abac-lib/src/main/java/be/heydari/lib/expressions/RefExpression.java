@@ -24,7 +24,6 @@ import lombok.NoArgsConstructor;
  */
 @Builder
 @Data
-@NoArgsConstructor
 public class RefExpression{//<T> {
     private String table;
     private String column;

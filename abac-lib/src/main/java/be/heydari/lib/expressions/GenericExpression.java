@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @Builder
-@NoArgsConstructor
 public class GenericExpression<T> {
     private ExpressionType type;
     private T value;

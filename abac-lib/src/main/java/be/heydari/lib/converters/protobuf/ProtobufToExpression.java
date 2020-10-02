@@ -75,7 +75,7 @@ public class ProtobufToExpression{
 
 
         Long right = pLongPredicate.getRight();
-        GenericExpression<Long> longExpression = new GenericExpression<>();
+        GenericExpression<Long> longExpression = GenericExpression.<Long>builder().build();
         longExpression.setValue(right);
         longExpression.setType(ExpressionType.LONG);
 
@@ -93,7 +93,7 @@ public class ProtobufToExpression{
 
 
         Float right = pFloatPredicate.getRight();
-        GenericExpression<Float> floatExpression = new GenericExpression<>();
+        GenericExpression<Float> floatExpression = GenericExpression.<Float>builder().build();
         floatExpression.setValue(right);
         floatExpression.setType(ExpressionType.FLOAT);
 
@@ -111,7 +111,7 @@ public class ProtobufToExpression{
 
 
         Double right = pDoublePredicate.getRight();
-        GenericExpression<Double> doubleExpression = new GenericExpression<>();
+        GenericExpression<Double> doubleExpression = GenericExpression.<Double>builder().build();
         doubleExpression.setValue(right);
         doubleExpression.setType(ExpressionType.DOUBLE);
 
@@ -129,7 +129,7 @@ public class ProtobufToExpression{
 
 
         Integer right = pIntPredicate.getRight();
-        GenericExpression<Integer> integerExpression = new GenericExpression<>();
+        GenericExpression<Integer> integerExpression = GenericExpression.<Integer>builder().build();
         integerExpression.setValue(right);
         integerExpression.setType(ExpressionType.INT);
 
@@ -146,7 +146,7 @@ public class ProtobufToExpression{
         ComparisonOperator operator = ComparisonOperator.from(pStringPredicate.getOperator());
 
         String right = pStringPredicate.getRight();
-        GenericExpression<String> stringExpression = new GenericExpression<>();
+        GenericExpression<String> stringExpression = GenericExpression.<String>builder().build();
         stringExpression.setValue(right);
         stringExpression.setType(ExpressionType.STRING);
 
@@ -163,7 +163,7 @@ public class ProtobufToExpression{
         ComparisonOperator operator = ComparisonOperator.from(pBooleanPredicate.getOperator());
 
         Boolean right = pBooleanPredicate.getRight();
-        GenericExpression<Boolean> booleanExpression = new GenericExpression<>();
+        GenericExpression<Boolean> booleanExpression = GenericExpression.<Boolean>builder().build();
         booleanExpression.setValue(right);
         booleanExpression.setType(ExpressionType.BOOLEAN);
 

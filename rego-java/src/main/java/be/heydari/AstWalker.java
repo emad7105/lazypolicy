@@ -62,8 +62,8 @@ public class AstWalker {
         List<Term> terms = expression.getTerms();
         if (terms != null && terms.size() > 0) {
 
-            RefExpression left = new RefExpression();
-            GenericExpression right = new GenericExpression();
+            RefExpression left = RefExpression.builder().build();
+            GenericExpression right = GenericExpression.builder().build();
 
             for (Term term : terms) {
                 switch (term.getType()) {
