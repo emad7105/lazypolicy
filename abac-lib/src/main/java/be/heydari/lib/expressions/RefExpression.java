@@ -1,6 +1,8 @@
 package be.heydari.lib.expressions;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Reference expressions describe the entity's contextual query
@@ -20,7 +22,9 @@ import lombok.Data;
  *
  * @author Emad Heydari Beni
  */
+@Builder
 @Data
+@NoArgsConstructor
 public class RefExpression{//<T> {
     private String table;
     private String column;

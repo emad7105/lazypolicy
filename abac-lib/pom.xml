@@ -5,8 +5,9 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>abac-lib</artifactId>
-    <description>Utility library </description>
-
+    <packaging>jar</packaging>
+    <name>abac-lib</name>
+    <description>Utility library for lazy ABAC evaluation</description>
 
     <parent>
         <artifactId>lazy-policy</artifactId>
