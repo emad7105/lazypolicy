@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
+import static be.heydari.lib.expressions.ExpressionType.*;
 import static java.lang.String.format;
 
 public class JPQLConverter implements Converter<String, StringBuilder, StringBuilder, StringBuilder, StringBuilder> {
@@ -76,17 +77,23 @@ public class JPQLConverter implements Converter<String, StringBuilder, StringBui
 
         switch (operator) {
             case EQ:
-                return jpqlPredicate.append(format(" = %s ", String.valueOf(right.getValue())));
+                return jpqlPredicate.append(format(right.getType().equals(STRING) ? " = '%s' " : " = %s ",
+                        String.valueOf(right.getValue())));
             case NEQ:
-                return jpqlPredicate.append(format(" <> %s ", String.valueOf(right.getValue())));
+                return jpqlPredicate.append(format(right.getType().equals(STRING) ? " <> '%s' " : " <> %s "
+                        , String.valueOf(right.getValue())));
             case GTE:
-                return jpqlPredicate.append(format(" >= %s ", String.valueOf(right.getValue())));
+                return jpqlPredicate.append(format(right.getType().equals(STRING) ? " >= '%s' " : " >= %s "
+                        , String.valueOf(right.getValue())));
             case GT:
-                return jpqlPredicate.append(format(" > %s ", String.valueOf(right.getValue())));
+                return jpqlPredicate.append(format(right.getType().equals(STRING) ? " > '%s' " : " > %s "
+                        , String.valueOf(right.getValue())));
             case LTE:
-                return jpqlPredicate.append(format(" <= %s ", String.valueOf(right.getValue())));
+                return jpqlPredicate.append(format(right.getType().equals(STRING) ? " <= '%s' " : " <= %s "
+                        , String.valueOf(right.getValue())));
             case LT:
-                return jpqlPredicate.append(format(" < %s ", String.valueOf(right.getValue())));
+                return jpqlPredicate.append(format(right.getType().equals(STRING) ? " < '%s' " : " < %s "
+                        , String.valueOf(right.getValue())));
             default:
                 logger.warning("Unknown operation!");
                 break;
