@@ -13,7 +13,7 @@ public class JPQLConverter implements Converter<String, StringBuilder, StringBui
     private static Logger logger = Logger.getLogger(JPQLConverter.class.getName());
 
     @Override
-    public StringBuilder convert(Disjunction disjunction, String entity) {
+    public StringBuilder convert(Disjunction disjunction, String alias) {
         StringBuilder jpqlDisjunctions = new StringBuilder();
 
         if (disjunction.hasConjunctivePredicates()) {
@@ -23,7 +23,7 @@ public class JPQLConverter implements Converter<String, StringBuilder, StringBui
             while (it.hasNext()) {
                 Conjunction conjunction = it.next();
 
-                StringBuilder jpqlConjunction = convert(conjunction, entity);
+                StringBuilder jpqlConjunction = convert(conjunction, alias);
                 jpqlDisjunctions.append(format(" %s ", jpqlConjunction));
 
                 if (it.hasNext()) {
@@ -40,7 +40,7 @@ public class JPQLConverter implements Converter<String, StringBuilder, StringBui
     }
 
     @Override
-    public StringBuilder convert(Conjunction conjunction, String entity) {
+    public StringBuilder convert(Conjunction conjunction, String alias) {
         StringBuilder jpqlConjunctions = new StringBuilder();
 
         if (conjunction.hasBooleanPredicates()) {
@@ -50,7 +50,7 @@ public class JPQLConverter implements Converter<String, StringBuilder, StringBui
             while (it.hasNext()) {
                 BoolPredicate boolPredicate = it.next();
 
-                StringBuilder jpqlPredicate = convert(boolPredicate, entity);
+                StringBuilder jpqlPredicate = convert(boolPredicate, alias);
                 jpqlConjunctions.append(format(" %s ", jpqlPredicate));
 
                 if (it.hasNext()) {
@@ -67,12 +67,12 @@ public class JPQLConverter implements Converter<String, StringBuilder, StringBui
     }
 
     @Override
-    public <TValueType> StringBuilder convert(BoolPredicate<TValueType> predicate, String entity) {
+    public <TValueType> StringBuilder convert(BoolPredicate<TValueType> predicate, String alias) {
         RefExpression left = predicate.getLeft();
         GenericExpression<TValueType> right = predicate.getRight();
         ComparisonOperator operator = predicate.getOperator();
 
-        StringBuilder jpqlPredicate = convert(left, entity);
+        StringBuilder jpqlPredicate = convert(left, alias);
 
         switch (operator) {
             case EQ:
@@ -96,7 +96,9 @@ public class JPQLConverter implements Converter<String, StringBuilder, StringBui
     }
 
     @Override
-    public StringBuilder convert(RefExpression refExpression, String entity) {
-        return new StringBuilder(format("%s.%s",refExpression.getTable(),refExpression.getColumn()));
+    public StringBuilder convert(RefExpression refExpression, String alias) {
+        return new StringBuilder(format("%s.%s",
+                alias == null ? refExpression.getTable() : alias,
+                refExpression.getColumn()));
     }
 }

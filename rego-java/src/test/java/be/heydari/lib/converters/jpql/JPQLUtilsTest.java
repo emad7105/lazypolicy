@@ -155,9 +155,23 @@ public class JPQLUtilsTest {
     }
 
     private String parseAst(String file) throws IOException {
+        return parseAst(file, null); // if null, the table (entity) name is used
+    }
+
+    private String parseAst(String file, String alias) throws IOException {
         ResponseAST responseAST = responseParser.parse(stream(file));
         Disjunction disjunction = AstWalker.walk(responseAST);
-        return JPQLUtils.from(disjunction, "AccountState");
+        return JPQLUtils.from(disjunction, alias);
+    }
+
+    @Test
+    public void processAstAndWithAlias() throws IOException {
+        String jpqlWhereClauses = parseAst("8-and.json", "acc");
+
+        assertEquals(rmSpace("( ( acc.id = 1   AND  acc.broker.Id = broker23   AND  acc.location = Belgium  ) )"),
+                rmSpace(jpqlWhereClauses));
+
+        logger.info(jpqlWhereClauses);
     }
 
     private String rmSpace(String str) {

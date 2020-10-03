@@ -10,10 +10,10 @@ public class JPQLUtils {
 
     private static JPQLConverter jpqlConverter = new JPQLConverter();
 
-    public static String from(Disjunction disjunction, String entity) {
+    public static String from(Disjunction disjunction, String aliasOrEntity) {
 
         //String entity = "";
-        StringBuilder whereClause = jpqlConverter.convert(disjunction, entity);
+        StringBuilder whereClause = jpqlConverter.convert(disjunction, aliasOrEntity);
         return whereClause == null ? "" : whereClause.toString();
     }
 }
