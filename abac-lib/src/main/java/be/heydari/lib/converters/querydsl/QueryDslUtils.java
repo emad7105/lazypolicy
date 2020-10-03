@@ -14,7 +14,7 @@ public class QueryDslUtils {
         return protobufToQueryDslConverter.convert(pDisjunction, entityPath, entityType);
     }
 
-    public static BooleanExpression from(Disjunction disjunction, Class entityType) {
-        return queryDslConverter.convert(disjunction, entityType);
+    public static BooleanExpression from(Disjunction disjunction, PathBuilder entityPath, Class entityType) {
+        return queryDslConverter.convert(disjunction, entityPath, entityType);
     }
 }

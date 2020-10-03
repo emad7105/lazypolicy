@@ -14,17 +14,16 @@ import static java.lang.String.format;
  * @author Emad Heydari Beni
  */
 @Data
-public class QueryDslConverter implements Converter<Class, BooleanExpression, BooleanExpression, BooleanExpression, ComparablePath> {
+public class QueryDslConverter {
     private static Logger logger = Logger.getLogger(QueryDslConverter.class.getName());
 
 
-    @Override
-    public BooleanExpression convert(Disjunction disjunction, Class entityType) {
+    public BooleanExpression convert(Disjunction disjunction, PathBuilder entityPath, Class entityType) {
         List<Conjunction> conjunctivePredicates = disjunction.getConjunctivePredicates();
 
         if (disjunction.hasConjunctivePredicates()) {
             return conjunctivePredicates.stream().reduce(Expressions.FALSE,
-                    (agg, conjunctivePredicate) -> agg.or(convert(conjunctivePredicate, entityType)),
+                    (agg, conjunctivePredicate) -> agg.or(convert(conjunctivePredicate, entityPath, entityType)),
                     BooleanExpression::or
             );
         } else {
@@ -32,13 +31,12 @@ public class QueryDslConverter implements Converter<Class, BooleanExpression, Bo
         }
     }
 
-    @Override
-    public BooleanExpression convert(Conjunction conjunction, Class entityType) {
+    public BooleanExpression convert(Conjunction conjunction, PathBuilder entityPath, Class entityType) {
         List<BoolPredicate> predicates = conjunction.getPredicates();
 
         if (conjunction.hasBooleanPredicates()) {
             return predicates.stream().reduce(Expressions.TRUE,
-                    (agg, predicate) -> agg.and(convert(predicate, entityType)),
+                    (agg, predicate) -> agg.and(convert(predicate, entityPath, entityType)),
                     BooleanExpression::and
             );
         } else {
@@ -46,13 +44,12 @@ public class QueryDslConverter implements Converter<Class, BooleanExpression, Bo
         }
     }
 
-    @Override
-    public <TValueType> BooleanExpression convert(BoolPredicate<TValueType> predicate, Class entityType) {
+    public <TValueType> BooleanExpression convert(BoolPredicate<TValueType> predicate, PathBuilder entityPath, Class entityType) {
         RefExpression left = predicate.getLeft();
         GenericExpression<TValueType> right = predicate.getRight();
         ComparisonOperator operator = predicate.getOperator();
 
-        ComparablePath refExpComparablePath = convert(left, entityType, right.getType().getJavaClass());
+        ComparablePath refExpComparablePath = convert(left, entityPath, entityType, right.getType().getJavaClass());
         switch (operator) {
             case EQ:
                 return refExpComparablePath.eq(right.getValue());
@@ -74,13 +71,12 @@ public class QueryDslConverter implements Converter<Class, BooleanExpression, Bo
         return null;
     }
 
-    @Override
     public ComparablePath convert(RefExpression refExpression, Class aClass) {
         throw new IllegalArgumentException("There is no default column type; this method is not supported for the BooleanExpression converter!");
     }
 
-    public ComparablePath convert(RefExpression refExpression, Class entityType, Class columnType) {
-        PathBuilder entityPath = new PathBuilder(entityType, "entity");
+    public ComparablePath convert(RefExpression refExpression, PathBuilder entityPath, Class entityType, Class columnType) {
+        //PathBuilder entityPath = new PathBuilder(entityType, "entity");
         return entityPath.getComparable(refExpression.getColumn(), columnType);
     }
 }
