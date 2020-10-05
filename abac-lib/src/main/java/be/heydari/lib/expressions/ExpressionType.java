@@ -13,6 +13,11 @@ public enum ExpressionType {
         public Class getJavaClass() {
             return Boolean.class;
         }
+
+        @Override
+        public Boolean isNumber() {
+            return false;
+        }
     },
     STRING {
         @Override
@@ -23,6 +28,11 @@ public enum ExpressionType {
         @Override
         public Class getJavaClass() {
             return String.class;
+        }
+
+        @Override
+        public Boolean isNumber() {
+            return false;
         }
     },
 
@@ -37,6 +47,11 @@ public enum ExpressionType {
         public Class getJavaClass() {
             return Integer.class;
         }
+
+        @Override
+        public Boolean isNumber() {
+            return true;
+        }
     },
     LONG {
         @Override
@@ -47,6 +62,11 @@ public enum ExpressionType {
         @Override
         public Class getJavaClass() {
             return Long.class;
+        }
+
+        @Override
+        public Boolean isNumber() {
+            return true;
         }
     },
     FLOAT {
@@ -59,6 +79,11 @@ public enum ExpressionType {
         public Class getJavaClass() {
             return Float.class;
         }
+
+        @Override
+        public Boolean isNumber() {
+            return true;
+        }
     },
     DOUBLE {
         @Override
@@ -70,10 +95,16 @@ public enum ExpressionType {
         public Class getJavaClass() {
             return Float.class;
         }
+
+        @Override
+        public Boolean isNumber() {
+            return true;
+        }
     };
 
     public abstract String asLowerCase();
     public abstract Class getJavaClass();
+    public abstract Boolean isNumber();
 
 
     public static ExpressionType from(String numType) {
