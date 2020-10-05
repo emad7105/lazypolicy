@@ -12,22 +12,35 @@ import java.util.stream.Collectors;
 
 import static java.lang.String.format;
 
+/**
+ * @author Emad Heydari Beni
+ */
 public class CriteriaQueryConverter {
     private static Logger logger = Logger.getLogger(CriteriaQueryConverter.class.getName());
 
 
     public Predicate convert(Disjunction disjunction, Root root, CriteriaBuilder cb) {
-        return null;
+        List<Conjunction> conjunctivePredicates = disjunction.getConjunctivePredicates();
+        Predicate disjunctionResult = null;
+
+        if (disjunction.hasConjunctivePredicates()) {
+
+            Predicate[] cbPredicates = conjunctivePredicates.stream()
+                        .map(cp -> convert(cp, root, cb)).toArray(Predicate[]::new);
+            disjunctionResult = cb.or(cbPredicates);
+        }
+
+        return disjunctionResult;
     }
 
     public Predicate convert(Conjunction conjunction, Root root, CriteriaBuilder cb) {
-        List<BoolPredicate> predicates = conjunction.getPredicates();
+        List<BoolPredicate> boolPredicates = conjunction.getPredicates();
 
         Predicate conjunctionResult = null;
 
         if (conjunction.hasBooleanPredicates()) {
-            List<Predicate> cbPredicates = predicates.stream().map(p -> convert(p, root, cb)).collect(Collectors.toList());
-            conjunctionResult = cb.and(cbPredicates.toArray(Predicate[]::new));
+            Predicate[] cbPredicates = boolPredicates.stream().map(p -> convert(p, root, cb)).toArray(Predicate[]::new);
+            conjunctionResult = cb.and(cbPredicates);
         }
 
         return conjunctionResult;
