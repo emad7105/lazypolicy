@@ -4,6 +4,7 @@ import be.heydari.ast.*;
 import be.heydari.ast.Expression;
 import be.heydari.lib.expressions.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,6 +18,11 @@ import static java.lang.String.format;
 public class AstWalker {
     private static Logger logger = Logger.getLogger(AstWalker.class.getName());
 
+    private static ResponseParser responseParser = new ResponseParser();
+
+    public static Disjunction walk(String ast) throws IOException {
+        return walk(responseParser.parse(ast));
+    }
 
     public static Disjunction walk(ResponseAST ast) {
         List<Support> supports = ast.getSupports();
@@ -76,7 +82,7 @@ public class AstWalker {
                         right.setValue(term.getValue().getValue());
                         break;
                     case NUMBER:
-                        NumberTermValue numberValue = (NumberTermValue)term.getValue();
+                        NumberTermValue numberValue = (NumberTermValue) term.getValue();
                         right.setType(NumberType.toExpressionType(numberValue.getValue().getType()));
                         right.setValue(numberValue.getValue().getValue());
                         break;
@@ -104,7 +110,7 @@ public class AstWalker {
                 String refTermType = refTermValuePart.getType();
                 if (VAR.equals(refTermType)) {
                     ComparisonOperator op = from(refTermValuePart.getValue());
-                    if (op == null){
+                    if (op == null) {
                         logger.severe("operator is null");
                     }
                     boolPredicate.setOperator(op);
