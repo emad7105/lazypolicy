@@ -2,12 +2,13 @@
 
 
 # response folder
-rm -f responses
+rm -rf responses
 mkdir responses
 
 # start the server
 #rm -f server.log && touch server.log
-./opa run -s > responses/server.log 2>&1 &
+# Note: commented because of the Docker container
+# ./opa run -s > responses/server.log 2>&1 &
 
 input="input"
 unknown="data.accountStates"
@@ -63,4 +64,5 @@ done
 
 
 # stop the server
-pgrep opa | xargs kill
+# Useless because of the docker container
+# pgrep opa | xargs kill
