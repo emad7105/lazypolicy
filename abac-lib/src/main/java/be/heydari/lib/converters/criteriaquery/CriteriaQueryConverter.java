@@ -5,6 +5,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Expressions;
 
 import javax.persistence.criteria.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
@@ -39,7 +40,18 @@ public class CriteriaQueryConverter {
         Predicate conjunctionResult = null;
 
         if (conjunction.hasBooleanPredicates()) {
-            Predicate[] cbPredicates = boolPredicates.stream().map(p -> convert(p, root, cb)).toArray(Predicate[]::new);
+            List<Predicate> cbPredicateList = new ArrayList<>();
+            for (BoolPredicate p : boolPredicates) {
+                cbPredicateList.add(convert(p, root, cb));
+            }
+
+            Predicate[] cbPredicates = new Predicate[cbPredicateList.size()];
+            int i = 0;
+            while(i<cbPredicateList.size()) {
+                cbPredicates[i] = cbPredicateList.get(i);
+                i++;
+            }
+            //Predicate[] cbPredicates = boolPredicates.stream().map(p -> convert(p, root, cb)).toArray(Predicate[]::new);
             conjunctionResult = cb.and(cbPredicates);
         }
 

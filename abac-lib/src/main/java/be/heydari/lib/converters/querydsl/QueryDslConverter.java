@@ -2,11 +2,15 @@ package be.heydari.lib.converters.querydsl;
 
 import be.heydari.lib.converters.Converter;
 import be.heydari.lib.expressions.*;
+import com.querydsl.core.types.*;
+import com.querydsl.core.types.Expression;
 import com.querydsl.core.types.dsl.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import static java.lang.String.format;
 
@@ -22,10 +26,25 @@ public class QueryDslConverter {
         List<Conjunction> conjunctivePredicates = disjunction.getConjunctivePredicates();
 
         if (disjunction.hasConjunctivePredicates()) {
-            return conjunctivePredicates.stream().reduce(Expressions.FALSE,
+            BooleanExpression mixin = null;
+            for (Conjunction conjunctivePredicate : conjunctivePredicates) {
+                BooleanExpression right = convert(conjunctivePredicate, entityPath, entityType);
+                if (mixin == null) {
+                    mixin = right;
+                } else {
+                    Expressions.booleanOperation(Ops.OR, mixin, right);
+                }
+            }
+            return mixin;
+            /*List<BooleanExpression> conjunctiveExpressions = new ArrayList<>();
+            for(Conjunction conjunctivePredicate : conjunctivePredicates) {
+                conjunctiveExpressions.add(convert(conjunctivePredicate, entityPath, entityType));
+            }
+            return Expressions.booleanOperation(Ops.OR, conjunctiveExpressions.stream().toArray(BooleanExpression[]::new));*/
+            /*return conjunctivePredicates.stream().reduce(Expressions.FALSE,
                     (agg, conjunctivePredicate) -> agg.or(convert(conjunctivePredicate, entityPath, entityType)),
                     BooleanExpression::or
-            );
+            );*/
         } else {
             return Expressions.TRUE;
         }
@@ -35,10 +54,25 @@ public class QueryDslConverter {
         List<BoolPredicate> predicates = conjunction.getPredicates();
 
         if (conjunction.hasBooleanPredicates()) {
-            return predicates.stream().reduce(Expressions.TRUE,
+            BooleanExpression mixin = null;
+            for(BoolPredicate boolPredicate : predicates) {
+                BooleanExpression right = convert(boolPredicate, entityPath, entityType);
+                if (mixin == null) {
+                    mixin = right;
+                } else {
+                    Expressions.booleanOperation(Ops.ADD, mixin, right);
+                }
+            }
+            return mixin;
+            /*List<BooleanExpression> expressions = new ArrayList<>();
+            for(BoolPredicate boolPredicate : predicates) {
+                expressions.add(convert(boolPredicate, entityPath, entityType));
+            }
+            return Expressions.booleanOperation(Ops.AND, expressions.stream().toArray(BooleanExpression[]::new));*/
+            /*return predicates.stream().reduce(Expressions.TRUE,
                     (agg, predicate) -> agg.and(convert(predicate, entityPath, entityType)),
                     BooleanExpression::and
-            );
+            );*/
         } else {
             return Expressions.FALSE;
         }
@@ -71,12 +105,7 @@ public class QueryDslConverter {
         return null;
     }
 
-    public ComparablePath convert(RefExpression refExpression, Class aClass) {
-        throw new IllegalArgumentException("There is no default column type; this method is not supported for the BooleanExpression converter!");
-    }
-
     public ComparablePath convert(RefExpression refExpression, PathBuilder entityPath, Class entityType, Class columnType) {
-        //PathBuilder entityPath = new PathBuilder(entityType, "entity");
         return entityPath.getComparable(refExpression.getColumn(), columnType);
     }
 }
