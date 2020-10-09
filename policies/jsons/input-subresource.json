@@ -1,12 +1,12 @@
 {
   "action": "GET",
-  "path": ["accountStates", "25"],
+  "path": ["accountStates", "25l"],
   "subject": {
-    "brokerIds": ["1"]
+    "brokerIds": ["1l"]
   },
   "resource": {
       "location": "Belgium",
-      "issue": 2015,
-      "statementIds": ["1"]
+      "issue": "2015i",
+      "statementIds": ["1l"]
   }
 }

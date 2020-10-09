@@ -101,8 +101,8 @@
                     ]
                   },
                   {
-                    "type": "number",
-                    "value": 2015
+                    "type": "string",
+                    "value": "2015i"
                   }
                 ]
               }

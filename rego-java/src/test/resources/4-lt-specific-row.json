@@ -102,7 +102,7 @@
                   },
                   {
                     "type": "string",
-                    "value": "1"
+                    "value": "1l"
                   }
                 ]
               },
@@ -136,8 +136,8 @@
                     ]
                   },
                   {
-                    "type": "number",
-                    "value": 2015
+                    "type": "string",
+                    "value": "2015i"
                   }
                 ]
               }

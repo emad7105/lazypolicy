@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.logging.Logger;
 
+import static be.heydari.ast.NumberTermValue.isNumber;
 import static be.heydari.ast.TermType.*;
 
 /**
@@ -43,12 +44,18 @@ public class Term implements ASTNode {
                 break;
             case STRING:
                 log(term, type);
-                theTermValue = StringTermValue.fromData(termValue);
+                if (isNumber(termValue.asText())) {
+                    theTermValue = NumberTermValue.fromData(termValue);
+                    type = NUMBER;
+                }
+                else {
+                    theTermValue = StringTermValue.fromData(termValue);
+                }
                 break;
-            case NUMBER:
+            /*case NUMBER:
                 log(term, type);
                 theTermValue = NumberTermValue.fromData(termValue);
-                break;
+                break;*/
             case BOOLEAN:
                 log(term, type);
                 theTermValue = BooleanTermValue.fromData(termValue);

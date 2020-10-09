@@ -1,7 +1,7 @@
 #!/bin/bash
 
-read -p "Policy (defult: policy): " policy
-policy=${policy:-policy}
+read -p "Policy (defult: paul-eq): " policy
+policy=${policy:-paul-eq}
 
 read -p "Input (default: input): " input
 input=${input:-input}

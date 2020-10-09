@@ -102,7 +102,7 @@
                   },
                   {
                     "type": "string",
-                    "value": "1"
+                    "value": "1l"
                   }
                 ]
               },
@@ -140,8 +140,8 @@
                     ]
                   },
                   {
-                    "type": "number",
-                    "value": 1
+                    "type": "string",
+                    "value": "1l"
                   }
                 ]
               },

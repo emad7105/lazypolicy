@@ -2,20 +2,20 @@
   "action": "GET",
   "path": [
     "accountStates",
-    "1"
+    "1l"
   ],
   "subject": {
     "brokerIds": [
-      1
+      "1l"
     ]
   },
   "resource": {
     "location": "Belgium",
-    "issue": 2015,
+    "issue": "2015i",
     "statementIds": [
-      "1",
-      "2",
-      "3"
+      "1l",
+      "2l",
+      "3l"
     ]
   }
 }

@@ -105,8 +105,8 @@
                     ]
                   },
                   {
-                    "type": "number",
-                    "value": 1
+                    "type": "string",
+                    "value": "1l"
                   }
                 ]
               },
@@ -140,8 +140,8 @@
                     ]
                   },
                   {
-                    "type": "number",
-                    "value": 2019
+                    "type": "string",
+                    "value": "2019i"
                   }
                 ]
               }
@@ -190,8 +190,8 @@
                     ]
                   },
                   {
-                    "type": "number",
-                    "value": 1
+                    "type": "string",
+                    "value": "1l"
                   }
                 ]
               },
@@ -225,8 +225,8 @@
                     ]
                   },
                   {
-                    "type": "number",
-                    "value": 2015
+                    "type": "string",
+                    "value": "2015i"
                   }
                 ]
               },
@@ -310,8 +310,8 @@
                     ]
                   },
                   {
-                    "type": "number",
-                    "value": 1
+                    "type": "string",
+                    "value": "1l"
                   }
                 ]
               },
@@ -345,8 +345,8 @@
                     ]
                   },
                   {
-                    "type": "number",
-                    "value": 2015
+                    "type": "string",
+                    "value": "2015i"
                   }
                 ]
               },

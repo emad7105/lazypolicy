@@ -34,7 +34,7 @@ public enum NumberType {
     public abstract String asLowerCase();
 
     public static NumberType from(String operator) {
-        switch (operator) {
+        switch (operator.toLowerCase()) {
             case "i":
                 return NumberType.INT;
             case "l":
