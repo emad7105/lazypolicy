@@ -33,3 +33,10 @@ docker run -v $PWD:/policies -p 8181:8181 openpolicyagent/opa:0.20.5 run --serve
 curl -i localhost:8181/
 
 ```
+
+
+## Apache Solr
+This project supports converters for Apache Solr, namely converting OPA residual policies to Solr filter queries. For test purposes, you need to have an instance of Solr running. To do so, you need to run Solr in a Docker container:  
+```
+docker run -d -p 8983:8983 paulcwarren/solr
+```
