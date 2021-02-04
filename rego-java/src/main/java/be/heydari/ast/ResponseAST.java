@@ -28,8 +28,10 @@ public class ResponseAST implements ASTNode {
 
         // iterate through 'supports'
         List<Support> supportList = new ArrayList<>();
-        for (JsonNode support : supports) {
-            supportList.add(Support.fromData(support));
+        if (supports != null) {
+            for (JsonNode support : supports) {
+                supportList.add(Support.fromData(support));
+            }
         }
 
         return ResponseAST.builder()

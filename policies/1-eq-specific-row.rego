@@ -1,6 +1,5 @@
 package vfinance
 
-#default allow = false
 default allow_partial = false
 
 allow_partial {

@@ -26,8 +26,10 @@ public class Support implements ASTNode {
 
         // iterate over rules
         List<Rule> ruleList = new ArrayList<>();
-        for (JsonNode rule : rules) {
-            ruleList.add(Rule.fromData(rule));
+        if (rules != null) {
+            for (JsonNode rule : rules) {
+                ruleList.add(Rule.fromData(rule));
+            }
         }
 
         return Support.builder()

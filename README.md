@@ -32,6 +32,9 @@ docker run -v $PWD:/policies -p 8181:8181 openpolicyagent/opa:0.20.5 run --serve
 # test the container
 curl -i localhost:8181/
 
+# evaluate/compile policies with partially with multiple unknowns
+opa eval --input policies/hierarchical-resources/input.json --data policies/hierarchical-resources/tagged-policy.rego --unknowns data.accountStates --unknowns data.broker --format pretty --partial data.vfinance.allow 
+
 ```
 
 

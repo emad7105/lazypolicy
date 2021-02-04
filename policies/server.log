@@ -1,0 +1,6 @@
+{"addrs":[":8181"],"diagnostic-addrs":[],"insecure_addr":"","level":"info","msg":"Initializing server.","time":"2020-09-10T14:48:19+02:00"}
+{"client_addr":"127.0.0.1:58083","level":"info","msg":"Received request.","req_id":1,"req_method":"POST","req_path":"/v1/compile","time":"2020-09-10T14:48:19+02:00"}
+{"client_addr":"127.0.0.1:58083","level":"info","msg":"Sent response.","req_id":1,"req_method":"POST","req_path":"/v1/compile","resp_bytes":13,"resp_duration":1.006007,"resp_status":200,"time":"2020-09-10T14:48:19+02:00"}
+{"level":"info","msg":"Shutting down...","time":"2020-09-10T14:48:19+02:00"}
+{"level":"info","msg":"Server shutdown.","time":"2020-09-10T14:48:19+02:00"}
+{"current_version":"0.20.5","download_opa":"https://openpolicyagent.org/downloads/v0.23.2/opa_darwin_amd64","latest_version":"0.23.2","level":"info","msg":"OPA is out of date.","release_notes":"https://github.com/open-policy-agent/opa/releases/tag/v0.23.2","time":"2020-09-10T14:48:20+02:00"}

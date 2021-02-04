@@ -29,8 +29,10 @@ public class Rule implements ASTNode {
         JsonNode expressions = rule.get("body");
 
         List<Expression> expressionList = new ArrayList<>();
-        for (JsonNode expression : expressions) {
-            expressionList.add(Expression.fromData(expression));
+        if (expressions != null) {
+            for (JsonNode expression : expressions) {
+                expressionList.add(Expression.fromData(expression));
+            }
         }
 
         return Rule.builder()

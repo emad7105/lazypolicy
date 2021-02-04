@@ -38,6 +38,14 @@ public class ParsingTest {
         }
     }
 
+    @Test
+    public void testTaggedPoliciesForHierarchicalResources() throws IOException {
+        InputStream is = stream("tagged-policy-evaluated.json");
+        ResponseAST responseAST = responseParser.parse(is);
+
+        assertNotNull(responseAST);
+    }
+
     private List<String> loadAllPolicyResponses() throws IOException {
         return IOUtils.readLines(Thread.currentThread().getContextClassLoader().getResourceAsStream("."), Charsets.UTF_8)
                 .stream().filter(name -> name.contains(".json")).collect(Collectors.toList());
