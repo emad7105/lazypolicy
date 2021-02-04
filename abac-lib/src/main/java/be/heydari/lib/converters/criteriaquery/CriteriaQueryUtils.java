@@ -11,6 +11,9 @@ public class CriteriaQueryUtils {
     private static CriteriaQueryConverter criteriaQueryConverter = new CriteriaQueryConverter();
 
     public static Predicate from(Disjunction disjunction, Root root, CriteriaBuilder cb) {
+        if (disjunction == null) {
+            return null;
+        }
         return criteriaQueryConverter.convert(disjunction, root, cb);
     }
 }
