@@ -32,7 +32,7 @@ public class QueryDslConverter {
                 if (mixin == null) {
                     mixin = right;
                 } else {
-                    Expressions.booleanOperation(Ops.OR, mixin, right);
+                    mixin = Expressions.booleanOperation(Ops.OR, mixin, right);
                 }
             }
             return mixin;
@@ -60,7 +60,7 @@ public class QueryDslConverter {
                 if (mixin == null) {
                     mixin = right;
                 } else {
-                    Expressions.booleanOperation(Ops.ADD, mixin, right);
+                    mixin = Expressions.booleanOperation(Ops.AND, mixin, right);
                 }
             }
             return mixin;
