@@ -72,7 +72,7 @@ public class Term implements ASTNode {
 
 
     private static void log(JsonNode term, String type) {
-        logger.info(type + " => " + term.toPrettyString());
+//        logger.info(type + " => " + term.toPrettyString());
     }
 
 
